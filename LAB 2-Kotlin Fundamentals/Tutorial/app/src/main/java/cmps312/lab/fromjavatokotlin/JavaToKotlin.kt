@@ -87,4 +87,34 @@ package cmps312.lab.fromjavatokotlin
         18-> println("you are 18")
         else -> println("old")
     }
+
+ */
+
+/*
+ //the new grammar
+
+    for (i in 10 downTo 1)
+        print("$i-")
+
+    println()
+
+    for (i in 1 until 10)
+        print("$i-")
+
+    println()
+    for (i in 1..10)
+        print("$i-")
+    //functions
+    println()
+
+    for (i in 1..10 step 2)
+        print("$i-")
+    //collections + lamdas
+
+    var i = 0
+    while (i < 10) {
+        println("This is a while loop similar to java")
+        i++
+    }
+
  */
