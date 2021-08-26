@@ -116,5 +116,36 @@ package cmps312.lab.fromjavatokotlin
         println("This is a while loop similar to java")
         i++
     }
+    //collection
 
+    //mutable and immutable
+
+    var numbers = listOf(1, 2, 3, 4, 5)
+    println(numbers[0])
+
+    numbers = listOf(44, 55, 6, 7, 4, 2, 322, 2)
+    val numbers2 = mutableListOf<Any>(1, "55", 2, "what is your name", 3, 4, 5, 6)
+    println(numbers2)
+
+    //display - higher order function , lambdas
+
+    println(sum2(33, 44))
+    print(lettergrade(80))
+
+}
+
+fun sum(a: Int, b: Int): Int {
+    return a + b
+}
+
+fun sum2(a: Int, b: Int) = a + b
+
+fun largest(a: Int, b: Int) = if (a > b) a else b
+
+fun lettergrade(score: Int) = when (score) {
+    in 0..60 -> "F"
+    in 60..69 -> "D"
+    in 70..79 -> "C"
+    else -> "A"
+}
  */
