@@ -13,7 +13,8 @@ object CovidStatRepository {
         var data = File("data/covid-data.json").readText()
 
         //step is convert the text into object
-        covidStats = Json.decodeFromString(data)
+        //ignoreUnknownKeys - allows us to ignore some of the fields
+        covidStats = Json { ignoreUnknownKeys = true }.decodeFromString(data)
     }
 
     fun totalCovidDeath() = covidStats.sumOf { it?.totalDeaths ?: 0 }
@@ -23,4 +24,6 @@ object CovidStatRepository {
 fun main() {
     CovidStatRepository
         .covidStats.forEach { println(it.country) }
+
+
 }

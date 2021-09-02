@@ -9,16 +9,10 @@ data class CovidStat(
     var continent: String,
     var region: String,
     var totalCases: Int?,
-    var newCases: Int?,
     var totalDeaths: Int?,
     var newDeaths: Int?,
     var totalRecovered: Int?,
     var newRecovered: Int?,
     var activeCases: Int?,
-    var criticalCases: Int?,
-    var casesPer1M: Int?,
-    var deathsPer1M: Int?,
-    var totalTests: Int?,
-    var testsPer1M: Int?,
     var population: Int?
 )
