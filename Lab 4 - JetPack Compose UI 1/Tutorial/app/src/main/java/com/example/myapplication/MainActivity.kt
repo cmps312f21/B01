@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -25,12 +26,22 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun MyFirstComposable(name: String) {
+fun MyFirstComposable(name: String , age: Int = 55, gender : String = "Male") {
+    Row() {
+        Text(text = "Name Mr. $name")
+        Text(text = "Gender : $gender")
+        Text(text = "Age : $age")
+    }
+    
     Column() {
-        Text(text = "Welcome to JetPack Compose Mr. $name")
-        Text(text = "This android studio needs some improvements")
-        Text(text = "This android studio needs some improvements")
-        Text(text = "This android studio needs some improvements")
+        Text(text = "Image")
+        Column() {
+            Text(text = "Name of person")
+            Text(text = "Icon")
+            Row() {
+                
+            }
+        }
     }
 }
 
@@ -41,6 +52,9 @@ fun DisplayPreview() {
         MyFirstComposable(name = "Abdulahi Hassen")
     }
 }
+
+
+
 
 
 //Layouts
