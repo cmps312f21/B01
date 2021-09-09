@@ -3,15 +3,19 @@ package com.example.myapplication
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.myapplication.ui.theme.MyApplicationTheme
 
 class MainActivity : ComponentActivity() {
@@ -25,22 +29,18 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+//Modifiers
 @Composable
-fun MyFirstComposable(name: String , age: Int = 55, gender : String = "Male") {
+fun MyFirstComposable(name: String, age: Int = 36, gender: String = "Male") {
     Row() {
-        Text(text = "Name Mr. $name")
-        Text(text = "Gender : $gender")
-        Text(text = "Age : $age")
-    }
-    
-    Column() {
-        Text(text = "Image")
+        Image(painter = painterResource(id = R.drawable.ronaldo),
+            contentDescription = "Ronaldo",
+            modifier = Modifier.size(80.dp)
+            )
         Column() {
-            Text(text = "Name of person")
-            Text(text = "Icon")
-            Row() {
-                
-            }
+            Text(text = "Name : $name")
+            Text(text = "Age : $age")
+            Text(text = "Gender : $gender")
         }
     }
 }
@@ -52,9 +52,6 @@ fun DisplayPreview() {
         MyFirstComposable(name = "Abdulahi Hassen")
     }
 }
-
-
-
 
 
 //Layouts
