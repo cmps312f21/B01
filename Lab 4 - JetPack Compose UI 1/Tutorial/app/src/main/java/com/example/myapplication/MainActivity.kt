@@ -3,6 +3,7 @@ package com.example.myapplication
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -17,27 +18,29 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyApplicationTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    Greeting("Android")
-                }
+                MyFirstComposable(name = "Abdulahi Hassen")
             }
         }
     }
 }
 
 @Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    MyApplicationTheme {
-        Greeting("Android")
+fun MyFirstComposable(name: String) {
+    Column() {
+        Text(text = "Welcome to JetPack Compose Mr. $name")
+        Text(text = "This android studio needs some improvements")
+        Text(text = "This android studio needs some improvements")
+        Text(text = "This android studio needs some improvements")
     }
 }
+
+@Preview
+@Composable
+fun DisplayPreview() {
+    MyApplicationTheme {
+        MyFirstComposable(name = "Abdulahi Hassen")
+    }
+}
+
+
+//Layouts
