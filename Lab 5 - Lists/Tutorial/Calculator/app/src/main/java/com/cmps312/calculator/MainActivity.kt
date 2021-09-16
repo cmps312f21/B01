@@ -39,16 +39,12 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MyApp() {
     var total by remember { mutableStateOf(0) }
-    var number1 by remember { mutableStateOf("") }
-    var number2 by remember { mutableStateOf("") }
+
 
     Column() {
-        MyCalculatorScreen(total, number1, number2,
-            updateTotal = { newTotal -> total = newTotal },
-            updateNumber1 = { number1 = it },
-            updateNumber2 = { number2 = it }
+        MyCalculatorScreen(total, updateTotal = { newTotal -> total = newTotal })
+        MyCalculatorScreen(total, updateTotal = { newTotal -> total = newTotal })
 
-        )
         Text(
             text = "Increment Total by 1 $total",
             modifier = Modifier.clickable {
@@ -60,11 +56,13 @@ fun MyApp() {
 
 @Composable
 fun MyCalculatorScreen(
-    total: Int, number1: String, number2: String,
+    total: Int,
     updateTotal: (Int) -> Unit,
-    updateNumber1: (String) -> Unit,
-    updateNumber2: (String) -> Unit,
+
 ) {
+    var number1 by remember { mutableStateOf("") }
+    var number2 by remember { mutableStateOf("") }
+
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -72,9 +70,9 @@ fun MyCalculatorScreen(
     ) {
         Column() {
 
-            TextField(value = number1, onValueChange = { updateNumber1(it) })
+            TextField(value = number1, onValueChange = { number1 = it })
             Spacer(modifier = Modifier.height(5.dp))
-            TextField(value = number2, onValueChange = updateNumber2)
+            TextField(value = number2, onValueChange = { number2 = it })
             Text(text = "$total")
 
             if (number1.isNotEmpty() and number2.isNotEmpty())
