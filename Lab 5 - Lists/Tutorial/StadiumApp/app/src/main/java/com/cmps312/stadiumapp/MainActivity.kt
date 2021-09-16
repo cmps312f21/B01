@@ -14,6 +14,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import com.cmps312.stadiumapp.ui.theme.StadiumAppTheme
 import com.cmps312.stadiumapp.model.StadiumRepository
+import com.cmps312.stadiumapp.view.StadiumList
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +24,7 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background) {
-                    Greeting("Abdulahi")
+                    StadiumList(this)
                 }
             }
         }
@@ -41,6 +42,6 @@ fun Greeting(name: String) {
 @Composable
 fun DefaultPreview() {
     StadiumAppTheme {
-        Greeting("Android")
+        StadiumList(LocalContext.current)
     }
 }
