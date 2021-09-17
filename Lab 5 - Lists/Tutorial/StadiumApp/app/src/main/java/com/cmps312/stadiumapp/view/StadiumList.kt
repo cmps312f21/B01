@@ -19,7 +19,7 @@ fun StadiumList(context : Context) {
     val stadiums = StadiumRepository.getStadiums(context)
 
     Column() {
-        LazyColumn(){ items(stadiums){ StadiumCard(it) } }
+        LazyColumn() { items(stadiums) { StadiumCard(it) } }
     }
 }
 
