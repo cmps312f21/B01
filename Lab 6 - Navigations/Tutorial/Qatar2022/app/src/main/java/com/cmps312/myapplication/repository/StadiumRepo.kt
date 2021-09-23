@@ -7,6 +7,13 @@ import kotlinx.serialization.json.Json
 import java.util.*
 
 //Todo Add the SortBy
+object SortByOptions {
+    val NONE = "None"
+    val STADIUM_NAME = "Stadium Name"
+    val CITY_NAME = "City Name"
+    val SEATING_CAPACITY = "Seating Capacity"
+
+}
 
 object StadiumRepo {
     private var stadiums = listOf<Stadium>()
@@ -35,6 +42,13 @@ object StadiumRepo {
 
     fun getStadium(name: String) = stadiums.find { it.name.contains(name) }
 
-   //todo implement the sort
+    //todo implement the sort
+
+    fun sortStadiums(sortOption: String, stadiums: List<Stadium>) = when (sortOption) {
+        SortByOptions.STADIUM_NAME -> stadiums.sortedBy { it.name }
+        SortByOptions.CITY_NAME -> stadiums.sortedBy { it.city }
+        SortByOptions.SEATING_CAPACITY -> stadiums.sortedBy { it.seatingCapacity }
+        else -> stadiums
+    }
 
 }
