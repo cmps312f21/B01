@@ -1,4 +1,4 @@
-package com.cmps312.myapplication.component
+package com.cmps312.myapplication.views
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
@@ -16,7 +16,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.cmps312.myapplication.model.Stadium
 
