@@ -7,19 +7,17 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import com.cmps312.myapplication.views.StadiumList
 import com.cmps312.myapplication.repository.StadiumRepo
 import com.cmps312.myapplication.ui.theme.MyApplicationTheme
+import com.cmps312.myapplication.views.SearchBar
+import com.cmps312.myapplication.views.StadiumList
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,22 +35,21 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MyApp(context: Context) {
+    val stadiums = StadiumRepo.getStadiums(context)
+    var searchText by remember {
+        mutableStateOf("")
+    }
     Scaffold(
-        topBar = { TopBar() },
-        content = { StadiumList(StadiumRepo.getStadiums(context)) }
+        topBar = {
+            Column(modifier = Modifier
+                .background(MaterialTheme.colors.primary)
+                .fillMaxWidth()) {
+                SearchBar(searchText, onSearch = { searchText = it })
+            }
+        },
+        content = { StadiumList(stadiums) }
     )
 }
-
-@Composable
-fun TopBar() {
-    Column(modifier = Modifier
-        .background(MaterialTheme.colors.primary)
-        .fillMaxWidth()) {
-        Text(text = "This is the top bar",
-            modifier = Modifier.height(40.dp))
-    }
-}
-
 
 @Preview(showBackground = true)
 @Composable

@@ -10,21 +10,17 @@ import androidx.compose.material.TextField
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun SearchBar() {
-    var searchText by remember {
-        mutableStateOf("")
-    }
-
+fun SearchBar(searchText: String, onSearch: (String) -> Unit) {
     Box() {
         TextField(
             value = searchText,
-            onValueChange = { searchText = it },
+            onValueChange = { onSearch(it) },
             leadingIcon = {
                 Icon(imageVector = Icons.Default.Search,
                     contentDescription = "Search Icon",
@@ -35,7 +31,7 @@ fun SearchBar() {
                     Icon(imageVector = Icons.Default.Close,
                         contentDescription = "Close",
                         tint = MaterialTheme.colors.secondary,
-                        modifier = Modifier.clickable { searchText = "" }
+                        modifier = Modifier.clickable { onSearch("") }
                     )
             },
             modifier = Modifier
@@ -50,5 +46,7 @@ fun SearchBar() {
 @Preview(showBackground = true)
 @Composable
 fun PreviewSearchBar() {
-    SearchBar()
+    SearchBar(searchText = "", onSearch = {
+
+    })
 }
