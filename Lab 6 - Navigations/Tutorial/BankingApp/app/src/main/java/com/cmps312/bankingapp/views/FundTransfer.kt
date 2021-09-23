@@ -2,7 +2,6 @@ package com.cmps312.bankingapp.views
 
 
 import android.widget.Toast
-import androidx.activity.ComponentActivity
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.*
@@ -11,14 +10,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import com.cmps312.bankingapp.Screen
 import com.cmps312.bankingapp.model.Transfer
-import com.cmps312.bankingapp.viewmodel.BankingViewModel
 
 //Todo : add the call back
 @Composable
-fun FundTransferScreen(onTransferAdded: (Int) -> Unit) {
+fun FundTransfer(navHostController: NavHostController,
+                 onTransferAdded: (Int)->Unit) {
 
     var fromAccount by remember { mutableStateOf("") }
     var amount by remember { mutableStateOf("") }
@@ -28,6 +27,7 @@ fun FundTransferScreen(onTransferAdded: (Int) -> Unit) {
     var context = LocalContext.current
 
     //Todo getView model instance
+
 
     Card(modifier = Modifier
         .padding(16.dp)
@@ -76,7 +76,7 @@ fun FundTransferScreen(onTransferAdded: (Int) -> Unit) {
                     transfer.fromAccountNo = fromAccount
 
                     //Todo add the navigation here [read the transfer id from the bankview model after calling the add
-
+                    navHostController.navigate(Screen.Confirmation.route)
 
                 } else {
                     Toast.makeText(context, "Please provide all the information",

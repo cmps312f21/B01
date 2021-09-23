@@ -1,8 +1,6 @@
 package com.cmps312.bankingapp.views
 
-import android.util.Log
 import android.widget.Toast
-import androidx.activity.ComponentActivity
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.Card
@@ -13,13 +11,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import com.cmps312.bankingapp.viewmodel.BankingViewModel
 
 //Todo add the navigation
 @Composable
-fun Confirmation(transferId: Int) {
+fun Confirmation(transferId: Int, navHostController: NavHostController) {
 
     //Todo [Please ignore this code for now, you will understand it better late this week]
 //    val bankingViewModel =
