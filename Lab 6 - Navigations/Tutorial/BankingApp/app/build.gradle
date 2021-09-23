@@ -68,6 +68,7 @@ dependencies {
 
     //Todo For Navigation Component
     implementation "androidx.navigation:navigation-compose:2.4.0-alpha09"
+
     //Todo For using material icons
     implementation "androidx.compose.material:material-icons-extended:$compose_version"
 

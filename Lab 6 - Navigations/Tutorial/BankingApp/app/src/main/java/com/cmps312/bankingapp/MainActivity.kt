@@ -3,9 +3,13 @@ package com.cmps312.bankingapp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material.*
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.cmps312.bankingapp.ui.theme.BankingAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -24,6 +28,21 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MyApp() {
+    val navHostController = rememberNavController()
+    Scaffold(
+        topBar = {TopBar(navHostController)},
+        bottomBar = {BottomBar(navHostController)}
+    ) 
+}
+
+
+@Composable
+fun TopBar(navHostController: NavHostController) {
+
+}
+
+@Composable
+fun BottomBar(navHostController: NavHostController) {
 
 }
 
