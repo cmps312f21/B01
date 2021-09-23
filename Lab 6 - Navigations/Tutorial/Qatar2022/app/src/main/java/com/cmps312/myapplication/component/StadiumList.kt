@@ -16,16 +16,14 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.cmps312.myapplication.model.Stadium
 
 
 @Composable
 fun StadiumList(stadiums: List<Stadium>) {
-    LazyColumn {
-        items(stadiums) {
-            StadiumCard(stadium = it)
-        }
+    LazyColumn { items(stadiums) {StadiumCard(stadium = it) }
     }
 }
 
@@ -55,4 +53,43 @@ fun StadiumCard(stadium: Stadium) {
         }
     }
 }
+
+//@Preview(showBackground = true)
+//@Composable
+//fun PreviewStadiumList() {
+//    val stadiums = listOf<Stadium>(
+//        Stadium("Al-Gharafa", "Doha", "Completed",
+//            "al_gharafa", 400000),
+//        Stadium("Al-Gharafa", "Doha", "Completed",
+//            "al_gharafa", 400000),
+//        Stadium("Al-Gharafa", "Doha", "Completed",
+//            "al_gharafa", 400000),
+//        Stadium("Al-Gharafa", "Doha", "Completed",
+//            "al_gharafa", 400000)
+//    )
+//    StadiumList(stadiums)
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
