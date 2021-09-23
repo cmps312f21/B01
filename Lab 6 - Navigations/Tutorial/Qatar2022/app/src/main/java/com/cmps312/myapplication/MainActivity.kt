@@ -13,11 +13,11 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.toLowerCase
 import androidx.compose.ui.tooling.preview.Preview
 import com.cmps312.myapplication.repository.StadiumRepo
 import com.cmps312.myapplication.ui.theme.MyApplicationTheme
 import com.cmps312.myapplication.views.SearchBar
+import com.cmps312.myapplication.views.SortDD
 import com.cmps312.myapplication.views.StadiumList
 import java.util.*
 
@@ -41,21 +41,31 @@ fun MyApp(context: Context) {
     var searchText by remember {
         mutableStateOf("")
     }
+    var selectedOption by remember {
+        mutableStateOf("Sort By")
+    }
+
     Scaffold(
         topBar = {
             Column(modifier = Modifier
                 .background(MaterialTheme.colors.primary)
                 .fillMaxWidth()) {
                 SearchBar(searchText, onSearch = { searchText = it })
+                SortDD(selectedOption, onSelectedOptionChange = {
+                    selectedOption = it
+                })
             }
         },
         content = {
-            val filteredStadiums = stadiums.filter { it.name
-                .lowercase(Locale.getDefault())
-                .contains(searchText.lowercase(Locale.getDefault()))}
-            StadiumList(filteredStadiums)
+            val filteredStadiums = stadiums.filter {
+                it.name
+                    .lowercase(Locale.getDefault())
+                    .contains(searchText.lowercase(Locale.getDefault()))
+            }
+            val filteredAndSorted = StadiumRepo.sortStadiums(selectedOption, filteredStadiums)
+            StadiumList(filteredAndSorted)
         },
-        drawerContent = {StadiumList(stadiums)}
+        drawerContent = { StadiumList(stadiums) }
     )
 }
 
