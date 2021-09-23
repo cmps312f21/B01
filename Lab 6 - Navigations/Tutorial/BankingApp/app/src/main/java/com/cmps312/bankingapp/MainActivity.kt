@@ -1,25 +1,21 @@
-package com.cmps312.myapplication
+package com.cmps312.bankingapp
 
-import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
-import com.cmps312.myapplication.ui.theme.MyApplicationTheme
+import com.cmps312.bankingapp.ui.theme.BankingAppTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MyApplicationTheme {
+            BankingAppTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                    MyApp(this)
-
+                    MyApp()
                 }
             }
         }
@@ -27,15 +23,14 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun MyApp(context: Context) {
-    //Todo
-}
+fun MyApp() {
 
+}
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    MyApplicationTheme {
-        MyApp(LocalContext.current)
+    BankingAppTheme {
+        MyApp()
     }
 }
