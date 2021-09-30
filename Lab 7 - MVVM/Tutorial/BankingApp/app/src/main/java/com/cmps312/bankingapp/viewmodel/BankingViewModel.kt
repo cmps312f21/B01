@@ -16,6 +16,9 @@ class BankingViewModel(appContext: Application) : AndroidViewModel(appContext) {
     //mutable list
     val transfers = mutableStateListOf<Transfer>(*bankingRepository.getTransfer().toTypedArray())
 
+    //object
+    lateinit var selectedTransfer : Transfer
+
     fun addTransfer(newTransfer: Transfer){
         transfers.add(newTransfer)
     }

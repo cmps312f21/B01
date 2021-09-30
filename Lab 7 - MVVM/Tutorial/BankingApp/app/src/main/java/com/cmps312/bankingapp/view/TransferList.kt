@@ -47,6 +47,7 @@ fun TransferList(onTransferItemSelected: () -> Unit) {
                 items(transfers) { transfer ->
                     TransferCar(transfer, onTransferSelected = {
                         //Todo Transfer
+                        bankingViewModel.selectedTransfer = transfer
                         onTransferItemSelected()
                     })
                 }
