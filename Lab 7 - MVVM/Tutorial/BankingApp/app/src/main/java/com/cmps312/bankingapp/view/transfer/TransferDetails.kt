@@ -27,8 +27,7 @@ fun TransferDetails(onSubmit: () -> Unit) {
     // ToDo: again
     Card(modifier = Modifier
         .padding(16.dp)
-        .fillMaxWidth()
-        .offset(y = 200.dp),
+        .fillMaxWidth(),
         elevation = 16.dp) {
         Column(
             modifier = Modifier.padding(16.dp),

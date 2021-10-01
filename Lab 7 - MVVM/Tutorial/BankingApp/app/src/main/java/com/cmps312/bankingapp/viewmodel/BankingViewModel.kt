@@ -10,7 +10,7 @@ class BankingViewModel(appContext: Application) : AndroidViewModel(appContext) {
 
     val bankingRepository = BankingRepository(appContext)
 
-    val account by lazy { bankingRepository.getAccounts() }
+    val accounts by lazy { bankingRepository.getAccounts() }
     val beneficiaries by lazy { bankingRepository.getBeneficiaries() }
 
     //mutable list
@@ -18,6 +18,8 @@ class BankingViewModel(appContext: Application) : AndroidViewModel(appContext) {
 
     //object
     lateinit var selectedTransfer : Transfer
+
+    lateinit var newTransfer: Transfer
 
     fun addTransfer(newTransfer: Transfer){
         transfers.add(newTransfer)

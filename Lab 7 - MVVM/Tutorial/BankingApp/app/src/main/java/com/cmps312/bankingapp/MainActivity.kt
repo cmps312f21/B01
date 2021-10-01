@@ -11,7 +11,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.compose.rememberNavController
 import com.cmps312.bankingapp.ui.theme.BankingAppTheme
+import com.cmps312.bankingapp.view.AppNavHost
+import com.cmps312.bankingapp.view.MainScreen
 import com.cmps312.bankingapp.view.TransferList
 import com.cmps312.bankingapp.viewmodel.BankingViewModel
 
@@ -22,23 +25,13 @@ class MainActivity : ComponentActivity() {
             BankingAppTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                    Greeting(this)
+                    MainScreen()
                 }
             }
         }
     }
 }
 
-@Composable
-fun Greeting(context: Context) {
-    val bankingViewModel =
-        viewModel<BankingViewModel>(viewModelStoreOwner = LocalContext.current as ComponentActivity)
-
-    TransferList(onTransferItemSelected = {
-        Toast.makeText(context,
-            "Selected a transfer ${bankingViewModel.selectedTransfer}", Toast.LENGTH_SHORT).show()
-    })
-}
 
 @Preview(showBackground = true)
 @Composable
