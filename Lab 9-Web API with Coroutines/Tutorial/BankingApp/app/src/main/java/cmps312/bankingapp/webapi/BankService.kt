@@ -5,6 +5,7 @@ import cmps312.bankingapp.model.Beneficiary
 import cmps312.bankingapp.model.Transfer
 
 interface BankService {
+
     suspend fun getTransfers(cid: Int) : List<Transfer>
     suspend fun addTransfer(transfer: Transfer) : Transfer?
     suspend fun deleteTransfer(cid: Int, transferId: String) : String

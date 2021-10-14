@@ -53,12 +53,11 @@ class BankingViewModel(appContext: Application) : AndroidViewModel(appContext) {
         accounts.addAll(bankService.getAccounts(cid))
     }
 
-    fun addTransfer(transfer: Transfer) {
-        viewModelScope.launch {
-            val newTransfer = bankService.addTransfer(transfer)
-            newTransfer?.let { transfers.add(newTransfer) }
-        }
+    fun addTransfer(transfer: Transfer) = viewModelScope.launch {
+        val newTransfer = bankService.addTransfer(transfer)
+        newTransfer?.let { transfers.add(newTransfer) }
     }
+    
 
     fun getTransfer(transferId: String) = transfers.find { it.transferId == transferId }
 
