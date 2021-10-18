@@ -11,29 +11,12 @@ import io.ktor.http.*
 
 class QuBankService : BankService {
     private val BASE_URL = "https://cmps312banking.herokuapp.com/api"
-    private val client = HttpClient {
-        install(JsonFeature) {
-            serializer = KotlinxSerializer(json = kotlinx.serialization.json.Json {
-                run {
-                    isLenient = true
-                    ignoreUnknownKeys = true
-                }
-            })
-        }
-    }
-
     override suspend fun getTransfers(cid: Int): List<Transfer> {
-        val url = "$BASE_URL/transfers/$cid"
-        return client.get(url)
+        TODO("Not yet implemented")
     }
 
     override suspend fun addTransfer(transfer: Transfer): Transfer? {
-        val url = "$BASE_URL/transfers/${transfer.cid}"
-        return client.post {
-            url(url)
-            contentType(ContentType.Application.Json)
-            body = transfer
-        }
+        TODO("Not yet implemented")
     }
 
     override suspend fun deleteTransfer(cid: Int, transferId: String): String {
