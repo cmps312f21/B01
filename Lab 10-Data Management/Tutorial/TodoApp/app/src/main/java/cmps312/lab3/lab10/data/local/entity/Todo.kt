@@ -1,8 +1,6 @@
 package cmps312.lab3.lab10.data.local.entity
 
-import androidx.room.Entity
-import androidx.room.ForeignKey
-import androidx.room.PrimaryKey
+import androidx.room.*
 
 //One to Many [One projecet can have many stodos]
 //this will enforce to not have inconsitent ID for a project.
@@ -19,9 +17,9 @@ import androidx.room.PrimaryKey
 )
 data class Todo(
     var title: String? = null,
-
     var priority: String? = null,
-    
+
+    @ColumnInfo(index = true)
     var pid: Int,
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
