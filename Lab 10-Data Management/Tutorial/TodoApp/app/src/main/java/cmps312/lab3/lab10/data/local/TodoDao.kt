@@ -2,7 +2,7 @@ package cmps312.lab3.lab10.data.local
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import cmps312.lab.todoapplication.data.local.entity.ProjectWithTodos
+import cmps312.lab3.lab10.data.local.entity.ProjectWithTodos
 import cmps312.lab3.lab10.data.local.entity.Project
 import cmps312.lab3.lab10.data.local.entity.Todo
 

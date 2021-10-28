@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import cmps312.lab3.lab10.data.local.entity.Project
 import cmps312.lab3.lab10.data.local.entity.Todo
 import cmps312.lab3.lab10.data.repository.TodoListRepo
+
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -21,7 +22,7 @@ class TodoViewModel(appContext: Application) : AndroidViewModel(appContext) {
     lateinit var selectedProject: Project
 
     fun getTodos(project: Project) {
-        todos = todoListRepo.getTodoListByProject(project.id)
+        todos = todoListRepo.getTodos(project.id)
         Log.d("TAG", "getTodos: $project.id $project.name")
     }
 
@@ -39,7 +40,7 @@ class TodoViewModel(appContext: Application) : AndroidViewModel(appContext) {
 
     fun updateTodo(todo: Todo) {
         viewModelScope.launch(Dispatchers.IO) {
-            todoListRepo.updateToDo(todo)
+            todoListRepo.updateTodo(todo)
         }
     }
 
