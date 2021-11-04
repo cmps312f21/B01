@@ -1,5 +1,6 @@
 package com.cmps312.todoapp.data.repository
 
+import android.util.Log
 import com.cmps312.todoapp.data.entity.Project
 import com.cmps312.todoapp.data.entity.Todo
 import com.google.firebase.firestore.FirebaseFirestore
@@ -15,10 +16,14 @@ object TodoListRepo {
     init {
         db.firestoreSettings = firestoreSettings { isPersistenceEnabled = true }
     }
+
     suspend fun getProjects(): List<Project> =
         projectDocumentsRef.get().await().toObjects(Project::class.java)
 
     fun addProject(project: Project) = projectDocumentsRef.add(project)
+        .addOnSuccessListener { Log.d(TAG, "Successfully added: ") }
+        .addOnFailureListener { Log.d(TAG, "Failed: ") }
+
     suspend fun updateProject(updatedProject: Project) =
         projectDocumentsRef.document(updatedProject.id).set(updatedProject)
 
@@ -31,7 +36,12 @@ object TodoListRepo {
     suspend fun getTodoListByProject(pid: String): List<Todo> =
         todosDocumentsRef.whereEqualTo("projectId", pid).get().await().toObjects(Todo::class.java)
 
-    fun addTodo(todo: Todo) = todosDocumentsRef.add(todo)
+    fun addTodo(todo: Todo) =
+        todosDocumentsRef.add(todo)
+            .addOnSuccessListener { Log.d(TAG, "Successfully added: ") }
+            .addOnFailureListener { Log.d(TAG, "Failed: ") }
+
+
     suspend fun getTodo(id: String) =
         todosDocumentsRef.document(id).get().await().toObject(Todo::class.java)
 }

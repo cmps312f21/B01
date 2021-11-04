@@ -56,17 +56,24 @@ class TodoViewModel(application: Application) : AndroidViewModel(application) {
     fun updateProject(updatedProject: Project) = viewModelScope.launch(Dispatchers.IO) {
         TodoListRepo.updateProject(updatedProject)
     }
+
     fun deleteProject(project: Project) = viewModelScope.launch {
         Log.d(TAG, "deleteProject: is called $project")
         TodoListRepo.deleteProject(project)
     }
 
     private fun registerProjectlistener() {
-       TODO()
+        TodoListRepo.projectDocumentsRef.addSnapshotListener { snappshot, e ->
+            if (e != null) return@addSnapshotListener
+            _projects.value = snappshot!!.toObjects(Project::class.java)
+        }
     }
 
     private fun registerTodolistener() {
-       TODO()
+        TodoListRepo.todosDocumentsRef.addSnapshotListener { snappshot, e ->
+            if (e != null) return@addSnapshotListener
+            _todos.value = snappshot!!.toObjects(Todo::class.java)
+        }
     }
 
 
