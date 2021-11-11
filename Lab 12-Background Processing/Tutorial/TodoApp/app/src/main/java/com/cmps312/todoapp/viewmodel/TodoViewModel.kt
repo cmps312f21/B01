@@ -3,7 +3,6 @@ package com.cmps312.todoapp.viewmodel
 import android.app.Application
 import android.net.Uri
 import android.util.Log
-import androidx.compose.runtime.MutableState
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -11,8 +10,6 @@ import androidx.lifecycle.viewModelScope
 import com.cmps312.todoapp.data.entity.Project
 import com.cmps312.todoapp.data.entity.Todo
 import com.cmps312.todoapp.data.repository.TodoListRepo
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
@@ -30,11 +27,11 @@ class TodoViewModel(application: Application) : AndroidViewModel(application) {
     var selectedProject: Project? = null
     var isEdit = false
 
-
     init {
         registerProjectlistener()
         registerTodolistener()
     }
+
     fun getTodos(projectId: String) {
         _todos.value = listOf<Todo>() //clear the list
         viewModelScope.launch(Dispatchers.IO) {
@@ -54,7 +51,7 @@ class TodoViewModel(application: Application) : AndroidViewModel(application) {
     fun addProject(project: Project, photoUri: Uri) {
         viewModelScope.launch(Dispatchers.IO) {
             //Todo call the upload
-            //project.userId = Firebase.auth.currentUser?.uid.toString()
+            project.imageUrl = TodoListRepo.uploadPhoto(photoUri)
             TodoListRepo.addProject(project).await()
         }
     }

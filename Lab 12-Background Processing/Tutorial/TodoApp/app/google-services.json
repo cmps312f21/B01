@@ -1,41 +1,33 @@
 {
   "project_info": {
-    "project_number": "904128473939",
-    "project_id": "b53-todoapp",
-    "storage_bucket": "b53-todoapp.appspot.com"
+    "project_number": "1092168631509",
+    "project_id": "b01-finallabproject",
+    "storage_bucket": "b01-finallabproject.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:904128473939:android:d3543f2d72af87f8278fa6",
+        "mobilesdk_app_id": "1:1092168631509:android:f45450d3f93ef473510e5c",
         "android_client_info": {
           "package_name": "com.cmps312.todoapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "904128473939-7tpa0lfn192hkkp4qagicoh9gmtd8nbt.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.cmps312.todoapp",
-            "certificate_hash": "d4478b9a7a48eb149987a6ddf4c60df61c304319"
-          }
-        },
-        {
-          "client_id": "904128473939-mh474ih5f4736mco7o2uaac0afnuk7kk.apps.googleusercontent.com",
+          "client_id": "1092168631509-smeln6f078dnpa7nalq3qf2fu7lmp3e7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAVMHcel0JhcZAGh2mCA1CB1qLHeTUdiZw"
+          "current_key": "AIzaSyBuB9VcnJRVIe63ISVP8L6b6W8GoYUkWuY"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "904128473939-mh474ih5f4736mco7o2uaac0afnuk7kk.apps.googleusercontent.com",
+              "client_id": "1092168631509-smeln6f078dnpa7nalq3qf2fu7lmp3e7.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

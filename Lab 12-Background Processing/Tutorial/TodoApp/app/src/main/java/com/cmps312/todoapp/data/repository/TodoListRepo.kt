@@ -8,6 +8,8 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestoreSettings
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.tasks.await
+import java.text.SimpleDateFormat
+import java.util.*
 
 object TodoListRepo {
 
@@ -19,6 +21,7 @@ object TodoListRepo {
     init {
         db.firestoreSettings = firestoreSettings { isPersistenceEnabled = true }
     }
+
     suspend fun getProjects(): List<Project> =
         projectDocumentsRef.get().await().toObjects(Project::class.java)
 
@@ -49,4 +52,14 @@ object TodoListRepo {
 
     //todo add uploadPhoto
 
+    suspend fun uploadPhoto(photoUri: Uri): String {
+        var timeStamp = SimpleDateFormat("yyyymmdd_HHmmss").format(Date())
+        var imageName = "Image_$timeStamp.png"
+
+        var storageReference = FirebaseStorage.getInstance()
+            .reference.child("images").child(imageName)
+        storageReference.putFile(photoUri)
+        val imageUrl = storageReference.downloadUrl.await().toString()
+        return imageUrl
+    }
 }

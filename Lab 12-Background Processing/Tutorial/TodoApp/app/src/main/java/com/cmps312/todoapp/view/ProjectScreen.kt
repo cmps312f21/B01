@@ -4,6 +4,8 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.widget.Toast
 import androidx.activity.ComponentActivity
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.Card
@@ -18,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.cmps312.todoapp.data.entity.Project
 import com.cmps312.todoapp.viewmodel.TodoViewModel
+import com.skydoves.landscapist.glide.GlideImage
 import java.util.*
 
 @Composable
@@ -32,6 +35,7 @@ fun ProjectScreen(onSubmit: () -> Unit) {
     var selectedImageUri by remember { mutableStateOf<Uri?>(null) }
 
     //Todo add image picker
+    var imageChooser =  rememberLauncherForActivityResult(ActivityResultContracts.GetContent()){ selectedImageUri = it }
 
     if (todoViewModel.selectedProject != null) {
         title = "Edit Project"
@@ -70,7 +74,7 @@ fun ProjectScreen(onSubmit: () -> Unit) {
             )
             Button(
                 onClick = {
-                    //todo add image picker
+                    imageChooser.launch("image/*")
                 }) {
                 Text(text = "Select Project Image")
             }
@@ -110,7 +114,8 @@ fun ProjectScreen(onSubmit: () -> Unit) {
             ) {
                 Text(text = "Submit")
             }
-            //      Todo      GlideImage
+            //   Todo GlideImage
+            GlideImage(selectedImageUri)
         }
 
     }
