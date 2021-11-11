@@ -35,8 +35,6 @@ class TodoViewModel(application: Application) : AndroidViewModel(application) {
         registerProjectlistener()
         registerTodolistener()
     }
-
-
     fun getTodos(projectId: String) {
         _todos.value = listOf<Todo>() //clear the list
         viewModelScope.launch(Dispatchers.IO) {
