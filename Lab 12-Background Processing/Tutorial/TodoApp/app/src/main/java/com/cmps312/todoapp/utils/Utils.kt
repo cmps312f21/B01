@@ -16,7 +16,3 @@ fun displayMessage(context: Context, message: String) {
 }
 
 //todo add code here
-
-//fun
-
-
