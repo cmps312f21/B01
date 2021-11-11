@@ -50,16 +50,14 @@ object TodoListRepo {
     suspend fun getTodo(id: String) =
         todosDocumentsRef.document(id).get().await().toObject(Todo::class.java)
 
-    //todo add uploadPhoto
-
     suspend fun uploadPhoto(photoUri: Uri): String {
         var timeStamp = SimpleDateFormat("yyyymmdd_HHmmss").format(Date())
         var imageName = "Image_$timeStamp.png"
 
         var storageReference = FirebaseStorage.getInstance()
             .reference.child("images").child(imageName)
-        storageReference.putFile(photoUri)
-        val imageUrl = storageReference.downloadUrl.await().toString()
-        return imageUrl
+        storageReference.putFile(photoUri).await()
+        return storageReference.downloadUrl.await().toString()
     }
+
 }

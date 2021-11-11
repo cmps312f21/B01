@@ -130,8 +130,7 @@ fun ProjectCard(
                 }
 
             }
-            //Todo add GlideImage
-
+            GlideImage(project.imageUrl)
         }
 
     }

@@ -6,6 +6,7 @@ data class Project(
     @DocumentId
     var id: String = "",
     var name: String? = "",
+
     var imageUrl : String?=""
 ){
     constructor(): this("", "",imageUrl = "")
