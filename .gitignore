@@ -84,3 +84,4 @@ lint/outputs/
 lint/tmp/
 # lint/reports/
 Lab 1-Setup/.DS_Store
+.DS_Store
